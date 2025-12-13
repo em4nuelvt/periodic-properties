@@ -1,5 +1,5 @@
 // --- BANCO DE DADOS COMPLETO (1-118) ---
-// (Mantido igual)
+
 const rawData = [
     [1,"H","Hidrogênio",1.008,53,2.2,"Não-Metal"],
     [2,"He","Hélio",4.0026,31,0,"Gás Nobre"],
