@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElementOS - Tabela Dinâmica</title>
+    <!-- Fonte Moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+            Propriedades Periódicas dos <span>Elementos</span>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Buscar: 'Ouro', 'Au' ou '79'...">
+        </div>
+    </header>
+
+    <main>
+        <!-- Sidebar Esquerda -->
+        <aside>
+            <div class="sidebar-card">
+                <div style="padding-bottom: 10px; border-bottom: 1px solid var(--border);">
+                    <h3>Seleção Rápida</h3>
+                    <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 5px;">Todos os 118 elementos</p>
+                </div>
+                
+                <div class="scrollable-grid">
+                    <div class="mini-periodic-table" id="element-grid">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-card" style="margin-top: 1rem; background: linear-gradient(to right, #f8fafc, #fff); max-height: auto;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--primary)">Nota Técnica</h4>
+                <p style="font-size: 0.85rem;">A distribuição segue o <strong>Diagrama de Pauling</strong> estrito. Exceções à regra (ex: Cobre, Cromo) não são aplicadas automaticamente para fins didáticos de química geral.</p>
+            </div>
+        </aside>
+
+        <!-- Área Principal (Dashboard) -->
+        <section class="dashboard-area">
+            
+            <!-- Estado Inicial -->
+            <div id="welcome-msg" class="welcome-state">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem; color: var(--secondary)"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path></svg>
+                <h2>Explore o Universo Químico</h2>
+                <p>Digite o nome, símbolo ou número na barra de busca.</p>
+            </div>
+
+            <!-- Conteúdo Dinâmico (Escondido inicialmente) -->
+            <div id="result-container" style="display: none; animation: fadeIn 0.5s;">
+                
+                <!-- 1. Hero Card -->
+                <div class="hero-card" id="hero-card">
+                    <div class="hero-info">
+                        <h1 id="el-name">Nome</h1>
+                        <h2 id="el-family">Família</h2>
+                        <span class="atomic-badge">Z = <span id="el-z">0</span></span>
+                        <span class="atomic-badge" style="margin-left: 5px;">Massa: <span id="el-mass">0</span></span>
+                    </div>
+                    <div class="big-symbol" id="el-symbol">El</div>
+                </div>
+
+                <!-- 2. Propriedades Químicas -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Raio Atômico</div>
+                        <div class="stat-value" id="el-radius">0 pm</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Eletronegatividade</div>
+                        <div class="stat-value" id="el-electro">0.0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Configuração (Pauling)</div>
+                        <div class="stat-value" style="font-size: 0.9rem; color: var(--primary); word-break: break-word;" id="el-config-text">...</div>
+                    </div>
+                </div>
+
+                <!-- 3. Distribuição por Camadas -->
+                <div class="layer-container">
+                    <div class="section-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        Distribuição por Camadas (K - Q)
+                    </div>
+                    <div id="layers-visual">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+
+                <!-- 4. Orbitais e Spins -->
+                <div class="layer-container">
+                    <div class="section-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        Diagrama de Pauling & Hund
+                    </div>
+                    <div class="orbital-wrapper" id="orbitals-visual">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+<script src="script.js"></script>
+</body>
+</html>

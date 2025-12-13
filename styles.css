@@ -1,0 +1,319 @@
+:root {
+    /* Cores Padrão (Azul Inicial) */
+    --primary: #2563eb;       
+    --primary-light: #eff6ff;
+    
+    --secondary: #475569;     
+    --bg-body: #f8fafc;       
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+    --accent-green: #10b981;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--secondary);
+    padding-bottom: 40px;
+    transition: background-color 0.3s ease;
+}
+
+/* --- Header --- */
+header {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* O ícone e o texto "OS" usam a cor primária dinâmica */
+.brand span, .brand svg { color: var(--primary); transition: color 0.3s; }
+
+.search-container {
+    position: relative;
+    width: 350px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-body);
+    outline: none;
+    transition: all 0.2s;
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* --- Container Principal --- */
+main {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    main { grid-template-columns: 1fr; }
+}
+
+/* --- Seção Esquerda: Seletor Rápido --- */
+.sidebar-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh; 
+}
+
+.scrollable-grid {
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-top: 1rem;
+    flex: 1;
+}
+
+/* Custom Scrollbar */
+.scrollable-grid::-webkit-scrollbar { width: 6px; }
+.scrollable-grid::-webkit-scrollbar-track { background: #f1f1f1; }
+.scrollable-grid::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+
+.mini-periodic-table {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+}
+
+.element-btn {
+    aspect-ratio: 1;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--item-bg, var(--bg-body)); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.75rem;
+    position: relative;
+}
+
+.element-btn strong { font-size: 0.9rem; font-weight: 700; }
+.element-btn span { font-size: 0.7rem; opacity: 0.7; }
+
+.element-btn:hover {
+    border-color: var(--primary);
+    filter: brightness(0.95);
+    transform: translateY(-2px);
+    z-index: 10;
+}
+
+.element-btn.active {
+    background: var(--primary) !important; /* Fica da cor forte selecionada */
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 0 10px var(--primary-light);
+}
+
+/* --- Seção Direita: Dashboard --- */
+.dashboard-area {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.welcome-state {
+    text-align: center;
+    padding: 4rem;
+    color: #94a3b8;
+}
+
+.hero-card {
+    /* Fundo dinâmico usando apenas a cor primária e um degradê suave */
+    background: linear-gradient(135deg, var(--primary) 0%, rgba(0,0,0,0.2) 100%), var(--primary);
+    background-blend-mode: multiply;
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+.hero-info h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.hero-info h2 { font-size: 1.25rem; font-weight: 400; opacity: 0.9; }
+
+.atomic-badge {
+    background: rgba(255,255,255,0.25);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: inline-block;
+    backdrop-filter: blur(4px);
+}
+
+.big-symbol {
+    font-size: 4rem;
+    font-weight: 800;
+    background: rgba(255,255,255,0.1);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(4px);
+}
+
+/* --- Cards de Propriedades --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary); /* Borda lateral colorida */
+    transition: border-color 0.3s;
+}
+
+.stat-label { font-size: 0.85rem; color: #64748b; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em; }
+.stat-value { font-size: 1.25rem; font-weight: 600; color: #0f172a; }
+
+/* --- Visualização de Camadas --- */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Ícones dos títulos mudam de cor também */
+.section-title svg { color: var(--primary); transition: color 0.3s; }
+
+.layer-container {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.layer-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.layer-name {
+    width: 40px;
+    font-weight: 700;
+    color: var(--primary);
+    transition: color 0.3s;
+}
+
+.progress-track {
+    flex: 1;
+    height: 12px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    margin: 0 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary); /* A barra de progresso agora segue a cor do elemento */
+    border-radius: 6px;
+    transition: width 1s ease-out, background 0.3s;
+    opacity: 0.8;
+}
+
+.layer-value {
+    width: 80px;
+    font-size: 0.9rem;
+    text-align: right;
+    color: #64748b;
+}
+
+/* --- Visualização de Orbitais --- */
+.orbital-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 10px;
+}
+
+.orbital-group {
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orbital-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #64748b;
+}
+
+.boxes-container { display: flex; gap: 4px; }
+
+.orbital-box {
+    width: 28px;
+    height: 28px;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--primary); /* Texto do orbital colorido */
+    font-weight: bold;
+    transition: color 0.3s;
+}
